@@ -63,21 +63,29 @@ REPORT
 Output: 3,3,NORTH
 ```
 
-## Guideline
+## Solution Explanation
 
-- Think about your solution as a code that will be submitted to production. Add tests to make sure it's bulletproof.
-- Add a README file (or call it a different name) where you can explain your design decisions and any other information you would like to add.  	 
+The application entrypoint is `bin/robot` script which delegates textual command from standard input
+to `Dispatcher` object that is responsible for parsing textual commands and delegating them to a `Robot` object.
 
-## Submitting your solution
+`Robot` class implements all the commands (PLACE, LEFT, RIGHT, MOVE, REPORT). Ability to move anywhere is verified
+in a separate `Table` object.
 
-- If you have a GitHub account, fork this repo and when your solution is ready for submission, send to us over email your ready to view forked repo URL
-- Otherwise, please use `git bundle` to package up a copy of your repository (with complete commit history) as a single file and send it to us 
-  
-  i.e
-  ```
-  git bundle create toy-robot-coding-challenge.bundle master
-  ```
-  
-----------------
+Such separation into different classes makes code to follow Single Responsibility Principle as much as possible.
 
-  Good luck and looking forward to you submission!
+## Application Usage
+
+Before first run:
+
+    bundle install
+
+Robot commands from a file:
+
+    bin/robot < samples/a.txt
+
+Robot commands from standard input:
+
+    cat - | bin/robot
+    PLACE 0,1,NORTH
+    REPORT
+    <CTRL>+<D>
