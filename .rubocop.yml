@@ -14,3 +14,7 @@ AllCops:
   Exclude:
     - 'bin/*'
   TargetRubyVersion: 3.0
+
+Metrics/BlockLength:
+  Exclude:
+    - 'spec/*.rb'
