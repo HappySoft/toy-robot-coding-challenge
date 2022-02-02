@@ -8,5 +8,5 @@ gem 'rspec', group: :test
 
 group :development do
   gem 'rubocop'
-  gem 'rubocop-rspec'
+  gem 'rubocop-rspec', require: false
 end

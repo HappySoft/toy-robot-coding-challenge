@@ -9,6 +9,8 @@
 #
 # See https://docs.rubocop.org/rubocop/configuration
 
+require: rubocop-rspec
+
 AllCops:
   NewCops: enable
   Exclude:

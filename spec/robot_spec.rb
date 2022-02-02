@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
 RSpec.describe Robot do
+  subject(:robot) { described_class.new(table) }
+
   let(:max_x) { 5 }
   let(:max_y) { 4 }
   let(:table) { Table.new(max_x, max_y) }
-
-  subject(:robot) { Robot.new(table) }
 
   describe '#place' do
     it 'stores coordinates and direction of the robot placement' do

@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
 RSpec.describe Table do
+  subject(:table) { described_class.new(max_x, max_y) }
+
   let(:max_x) { 5 }
   let(:max_y) { 4 }
-
-  subject(:table) { Table.new(max_x, max_y) }
 
   it 'is accessible within a table perimeter' do
     expect(table.accessible?(0, 0)).to be true
