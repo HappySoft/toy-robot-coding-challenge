@@ -36,24 +36,31 @@ class Robot
     end
   end
 
+  # Checks if robot was places properly on the table
+  def placed?
+    [position_x, position_y, direction].all?
+  end
+
   # @return [Array] current robot position/direction or empty list if it wasn't placed
   def report
-    [position_x, position_y, direction].compact
+    [position_x, position_y, direction] if placed?
   end
 
   # Rotates the robot 90 degrees counter-clockwise
   def left
-    @direction = previous_element(direction, DIRECTIONS)
+    @direction = previous_element(direction, DIRECTIONS) if placed?
   end
 
   # Rotates the robot 90 degrees clockwise
   def right
-    @direction = previous_element(direction, DIRECTIONS.reverse)
+    @direction = previous_element(direction, DIRECTIONS.reverse) if placed?
   end
 
   # Moves the robot 1 step forward in the current direction.
   # Position won't change if the destination location is not accessible.
   def move
+    return unless placed?
+
     dest_position_x = position_x + X_INCREMENTS.fetch(direction, 0)
     dest_position_y = position_y + Y_INCREMENTS.fetch(direction, 0)
 

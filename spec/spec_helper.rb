@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
-require_relative '../app/robot'
-require_relative '../app/table'
+require_relative '../app/loader'
 
 # See https://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 RSpec.configure do |config|

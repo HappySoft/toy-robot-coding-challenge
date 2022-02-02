@@ -1,0 +1,11 @@
+#!/usr/bin/ruby
+
+require_relative '../app/loader'
+
+table      = Table.new(5, 5)
+robot      = Robot.new(table)
+dispatcher = Dispatcher.new(robot)
+
+$stdin.each_line do |command|
+  dispatcher.perform(command.chomp)
+end

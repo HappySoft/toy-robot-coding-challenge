@@ -39,8 +39,8 @@ RSpec.describe Robot do
       expect(robot.report).to eq [1, 2, 'NORTH']
     end
 
-    it 'returns no coordinates when robot was not placed' do
-      expect(robot.report).to be_empty
+    it 'returns nothing when robot was not placed' do
+      expect(robot.report).to be_nil
     end
   end
 
@@ -68,6 +68,11 @@ RSpec.describe Robot do
       robot.left
       expect(robot.direction).to eq 'NORTH'
     end
+
+    it 'does nothing if not placed' do
+      robot.left
+      expect(robot.direction).to be_nil
+    end
   end
 
   describe '#right' do
@@ -94,6 +99,11 @@ RSpec.describe Robot do
       robot.right
       expect(robot.direction).to eq 'NORTH'
     end
+
+    it 'does nothing if not placed' do
+      robot.right
+      expect(robot.direction).to be_nil
+    end
   end
 
   describe '#move' do
@@ -119,6 +129,13 @@ RSpec.describe Robot do
       robot.place(1, 1, 'WEST')
       robot.move
       expect(robot.position_x).to eq 0
+    end
+
+    it 'does nothing if not placed' do
+      robot.move
+
+      expect(robot.position_x).to be_nil
+      expect(robot.position_y).to be_nil
     end
 
     describe 'does not move to inaccessible destination' do
